@@ -1,22 +1,4 @@
-# HDP大数据平台架构
-以下介绍以Apache Amabari为基础，整合业内主流大数据服务，构建一套完整的大数据解决方案。HDP是 Hortonworks Data Platform的简称，是Hortonworks公司推出的一套开源大数据平台，和Cloudera公司主推的另一套 CDH平台并称业内两大主流开源大数据解决方案。这两家并成一家公司，对行业行成垄断，并推出了他们的后继产品 Cloudera Data Platform(CDP)。但是 CDP产品策略公司也是大数据领域的龙头企业，目前已经合是盈利，并不开源，社区版也存在一些限制，因此大部分公司仍在使用 HDP和 CDH。
-hdp
 
-**Ambari架构**
-
-![](imgs/ambari.png)
-Ambari是非常典型的server-agent架构，每个机器都部署了agent进程，向server端汇过webui实现集中化的管理，包括大数据服的部署，配置修改，监控，命令下发等。目前agent进程通过puppet统一部署和维护，server端需要人工部署和初始化。
-
-**大数据平台**
-
-![](imgs/hdp.png)
-上图为HDP平台整体架构，共涵盖30多个服务和工具，大部分通过ambari集中部署和管理，但由于ambari和hdp平台已经不再迭代更新，有部分服务是在hdp平台的基础上，通过puppet或者其他手段单独部署并集成的。其中，部分服务和工具身兼多种用途，比如spark、flink、clickhouse，这里以他们目前主要用途进行了模块划分，不代表他们只有这个功能。
-
-**部分组件介绍**
-
-|服务名|简介|主要用途|
-|-----|---|-------|
-|123|12|123|
 
 # Spark基础
 ## RDD
@@ -74,7 +56,8 @@ Spark on YARN 的资源分配流程
 - YARN 的节点管理器（Node Manager）在分配的容器（Container）中启动 Spark Executor，并执行计算任务。
 
 
-## SparkStreaming
+## SparkStreaming & Structure Streaming
+
 
 # Spark常见问题
 ## 并发控制
