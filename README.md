@@ -7,7 +7,7 @@
 ## RDD
 https://spark.apache.org/docs/latest/rdd-programming-guide.html
 
-![](imgs/rdd.jpg)
+![](/imgs/rdd.jpg)
 RDDs（Resilient Distributed Datasets，弹性分布式数据集）是 Spark 中的逻辑数据单元。
 一个 RDD 以 分区（Partition） 进行划分，并分布在集群的各个节点上：一个 RDD 可以被分割成多个逻辑分区，这些分区可以存储在集群的不同机器上，并在其上进行处理。
 - 弹性：RDD 通过跟踪数据的 血统信息来恢复丢失的数据，在发生故障时能够 自动恢复。
