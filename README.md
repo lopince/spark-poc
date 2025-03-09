@@ -2,7 +2,9 @@
 
 ## Spark基础
 ### RDD
-![](resources/rdd.jpg)
+https://spark.apache.org/docs/latest/rdd-programming-guide.html
+
+![](imgs/rdd.jpg)
 RDDs（Resilient Distributed Datasets，弹性分布式数据集）是 Spark 中的逻辑数据单元。
 一个 RDD 以 分区（Partition） 进行划分，并分布在集群的各个节点上：一个 RDD 可以被分割成多个逻辑分区，这些分区可以存储在集群的不同机器上，并在其上进行处理。
 - 弹性：RDD 通过跟踪数据的 血统信息来恢复丢失的数据，在发生故障时能够 自动恢复。
@@ -12,7 +14,8 @@ RDDs（Resilient Distributed Datasets，弹性分布式数据集）是 Spark 中
 - 内存计算：RDD 将中间计算结果存储在内存中，以减少磁盘 I/O，提高计算速度。
 
 ### 架构组件
-![](resources/arch.png)
+https://spark.apache.org/docs/latest/cluster-overview.html
+![](imgs/arch.png)
 - Spark Driver：主要负责将 Spark 应用程序拆分为可以在各个 Worker 节点上执行的任务。
     - 运行代码中的 main() 方法
 	- **生成执行计划**（需要特别注意在数据源元数据过多的情况下容易OOM）
@@ -24,7 +27,7 @@ RDDs（Resilient Distributed Datasets，弹性分布式数据集）是 Spark 中
 - Spark Executor：执行集群管理器分配的任务，其生命周期与 Spark 应用程序相同
 
 ### 执行流程&术语
-![](resources/sparkexecplan.png)
+![](imgs/sparkexecplan.png)
 - 应用程序（Application）：基于 Spark 会话（SparkContext）运行的作业，具有唯一的 ID，如 <application_XXX>。
 - 作业（Jobs）：基于对 RDD 触发的 Action 操作 生成，一个作业由一个或多个 阶段（Stages） 组成。
 - 阶段（Stages）：基于 RDD 之间的 Shuffle 操作 生成，一个阶段包含一个或多个 任务（Tasks）。Shuffle 是 Spark 重新分配数据 的机制，使其在 RDD 分区中以不同方式分组。某些转换操作（如 join()）需要 Shuffle。有关 Shuffle 的详细优化，请参考 优化 Shuffle 调优实践。
@@ -61,11 +64,11 @@ YARN（Yet Another Resource Negotiator）是 Hadoop 生态中的 资源管理框
 hdp
 
 **Ambari架构**
-![](resources/ambari.png)
+![](imgs/ambari.png)
 Ambari是非常典型的server-agent架构，每个机器都部署了agent进程，向server端汇过webui实现集中化的管理，包括大数据服的部署，配置修改，监控，命令下发等。目前agent进程通过puppet统一部署和维护，server端需要人工部署和初始化。
 
 **大数据平台**
-![](resources/hdp.png)
+![](imgs/hdp.png)
 上图为HDP平台整体架构，共涵盖30多个服务和工具，大部分通过ambari集中部署和管理，但由于ambari和hdp平台已经不再迭代更新，有部分服务是在hdp平台的基础上，通过puppet或者其他手段单独部署并集成的。其中，部分服务和工具身兼多种用途，比如spark、flink、clickhouse，这里以他们目前主要用途进行了模块划分，不代表他们只有这个功能。
 
 **部分组件介绍**
