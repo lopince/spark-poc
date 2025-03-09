@@ -1,5 +1,8 @@
 
 
+# examples说明
++ /examples/bilog_realtime.zip: StructStreaming清洗日志etl示例（scala, 读kafka -》 写hdfs）
+
 # Spark基础
 ## RDD
 https://spark.apache.org/docs/latest/rdd-programming-guide.html
